@@ -5,19 +5,25 @@ var streamInfo = [];
 
 //onload
 $(document).ready(function() {
-    getChannels("doublelift");
+    var status = getChannels("nightblue3");
 });
 
 function getChannels(channel) {
-    let apiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel + "?callback=?"
-    let game = "";
+    var apiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel + "?callback=?"
+    var game = "";
+    var imageLink = "";
+    var streamName = "";
+    var status = "";
 
     $.getJSON(apiLink).done(updateChannel).fail(errStream);
 
     function updateChannel(data) {
+
         let channeltext = JSON.stringify(data["stream"]["game"]).replace(/"/g, "");
         console.log(channeltext);
         $('#testingpanel').html("<h3>" + channeltext + "</h3>");
+
+        // game = JSON.stringify(data["stream"]["game"]).replace()
     }
 
     function errStream(jqxhr, textStatus, err) {

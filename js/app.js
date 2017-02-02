@@ -6,7 +6,6 @@ var streamList = {
     "ESL_SC2": {},
     "nightblue3": {},
     "doublelift": {},
-    "freecodecamp": {},
     "imaqtpie": {},
     "arumba07": {}
 };
@@ -148,6 +147,7 @@ function populatePanels(prop) {
 
         $('<a/>', {
             href: "#",
+            onclick: removeItem(this),
             class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
             id: prop + "remove",
             html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
@@ -197,6 +197,7 @@ function populatePanels(prop) {
 
         $('<a/>', {
             href: "#",
+            onclick: removeItem(this),
             class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
             id: prop + "remove",
             html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
@@ -205,8 +206,8 @@ function populatePanels(prop) {
     }
 }
 
-function removeItem() {
-    console.log("hello");
+function removeItem(input) {
+    var value = $(input).data("id");
 
 }
 

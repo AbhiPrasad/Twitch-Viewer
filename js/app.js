@@ -101,20 +101,39 @@ function populatePanels(prop) {
     let game = streamList[prop]["game"];
     let imageLink = streamList[prop]["imageLink"];
     let online = streamList[prop]["online"];
+    let color = "";
+
+    if (online) {
+        color = "green";
+    } else {
+        color = "red";
+    }
 
     //insert in housing panels
     $('<div/>', {
         class: "panel-body",
-        id: prop,
-        html: "<h4>" + prop + "</h4>"
+        id: streamName,
+        html: "<h4>" + streamName + "</h4>",
+        style: "color:" + color
     }).insertAfter('#pan-head');
-    /*
-        $('<div/>', {
-            class: "panel-body",
-            id: prop,
-            html: "<h4>" + prop + "</h4>"
-        }).appendTo('#' + prop);
-        */
+
+    $('<div/>', {
+        class: "message",
+        id: prop + "message",
+        html: "<h4>" + message + "</h4>"
+    }).appendTo('#' + streamName);
+
+    $('<div/>', {
+        class: "game",
+        id: prop + "game",
+        html: "<h4>" + game + "</h4>"
+    }).insertAfter('#' + prop + "message");
+
+    $('<div/>', {
+        class: "imageLink",
+        id: prop + "imageLink",
+        html: "<h4>" + imageLink + "</h4>"
+    }).insertAfter('#' + prop + "game");
 }
 
 function removeItem() {

@@ -109,14 +109,10 @@ function populatePanels(prop) {
         id: prop + "pn1"
     }).insertAfter('#pan-head-online');
 
-    $('<a/>', {
-        id: "link"
-    }).appendTo('#' + prop + "pn1");
-
     $('<div/>', {
         class: "row",
         id: prop + "row1"
-    }).appendTo("#link");
+    }).appendTo("#" + prop + "pn1");
 
     $('<div/>', {
         class: "imageLink col-md-2",
@@ -130,19 +126,19 @@ function populatePanels(prop) {
     }).appendTo('#' + prop + "imageLink");
 
     $('<div/>', {
-        class: "streamName col-md-1",
+        class: "streamName col-md-1 center-block",
         id: streamName,
         html: "<h4>" + streamName + "</h4>"
     }).insertAfter('#' + prop + "imageLink");
 
     $('<div/>', {
-        class: "message col-md-6 col-md-offset-1",
+        class: "message col-md-6 col-md-offset-3 center-block",
         id: prop + "message",
         html: "<h4>" + message + "</h4>"
     }).insertAfter('#' + streamName);
 
     $('<div/>', {
-        class: "game center-text col-md-2",
+        class: "game center-text col-md-2 col-md-offset-2 center-block",
         id: prop + "game",
         html: "<h4>" + game + "</h4>"
     }).insertAfter('#' + prop + "message");

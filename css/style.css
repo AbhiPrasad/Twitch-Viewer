@@ -33,6 +33,7 @@
 
 .panel-success {
     margin-bottom: 0;
+    border-bottom-color: #FF0039;
 }
 
 .panel-danger {

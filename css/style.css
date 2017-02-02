@@ -28,7 +28,7 @@
 
 .bigbox {
     margin-top: 2em;
-    width: 64em;
+    text-align: center;
 }
 
 .panel-success {
@@ -48,4 +48,9 @@
     border-radius: 50%;
     padding: 5px;
     width: 70px;
+}
+
+.panel-body {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }

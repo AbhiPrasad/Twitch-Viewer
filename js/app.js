@@ -12,7 +12,7 @@ var streamList = {
 
 //onload
 $(document).ready(function() {
-    getChannels("kjsdfksahdflsadf");
+    getChannels("imaqtpie");
 });
 
 //gets dem channels J S O N 
@@ -59,6 +59,8 @@ function getChannels(channel) {
                         "online": false
                     }
                 }
+                console.log(returnObject);
+                addToStreamList(channel, returnObject);
             }
 
             function errChannel(jqxhr, textStatus, err) {
@@ -74,9 +76,9 @@ function getChannels(channel) {
                 "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]).replace(/"/g, ""),
                 "online": true
             }
+            console.log(returnObject);
+            addToStreamList(channel, returnObject);
         }
-        console.log(returnObject);
-        addToStreamList(channel, returnObject);
     }
 
     //if JSON request does not go through

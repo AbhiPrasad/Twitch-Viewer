@@ -52,10 +52,10 @@ function getChannels(channel) {
                     allGood = true;
 
                     return returnObject = {
-                        "streamName": JSON.stringify(channeldat["display_name"]),
-                        "message": JSON.stringify(channeldat["status"]),
-                        "game": JSON.stringify(channeldat["game"]),
-                        "imageLink": JSON.stringify(channeldat["logo"]),
+                        "streamName": JSON.stringify(channeldat["display_name"]).replace(/"/g, ""),
+                        "message": JSON.stringify(channeldat["status"]).replace(/"/g, ""),
+                        "game": JSON.stringify(channeldat["game"]).replace(/"/g, ""),
+                        "imageLink": JSON.stringify(channeldat["logo"]).replace(/"/g, ""),
                         "online": false
                     }
 
@@ -69,11 +69,15 @@ function getChannels(channel) {
         } else { //if channel is online
             allGood = true;
 
+            var testing = JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, "")
+            console.log(testing);
+            $('#testingpanel').html(testing);
+
             return returnObject = {
-                "streamName": JSON.stringify(data["stream"]["channel"]["display_name"]),
-                "message": JSON.stringify(data["stream"]["channel"]["status"]),
-                "game": JSON.stringify(data["stream"]["game"]),
-                "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]),
+                "streamName": JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, ""),
+                "message": JSON.stringify(data["stream"]["channel"]["status"]).replace(/"/g, ""),
+                "game": JSON.stringify(data["stream"]["game"]).replace(/"/g, ""),
+                "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]).replace(/"/g, ""),
                 "online": true
             }
         }

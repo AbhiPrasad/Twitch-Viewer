@@ -29,3 +29,11 @@
 .bigbox {
     margin-top: 2em;
 }
+
+.panel-success {
+    margin-bottom: 0;
+}
+
+.panel-danger {
+    margin-bottom: 0;
+}

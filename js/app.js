@@ -102,58 +102,50 @@ function populatePanels(prop) {
     let game = streamList[prop]["game"];
     let imageLink = streamList[prop]["imageLink"];
     let online = streamList[prop]["online"];
+    //insert in housing panels
 
-    if (online) {
-        //insert in housing panels
-        $('<div/>', {
-            class: "panel-body ",
-            id: streamName,
-            html: "<h4>" + streamName + "</h4>"
-        }).insertAfter('#pan-head-online');
+    $('<div/>', {
+        class: "panel-body",
+        id: prop + "pn1"
+    }).insertAfter('#pan-head-online');
 
-        $('<div/>', {
-            class: "game",
-            id: prop + "game",
-            html: "<h4>" + game + "</h4>"
-        }).appendTo('#' + streamName);
+    $('<a/>', {
+        id: "link"
+    }).appendTo('#' + prop + "pn1");
 
-        $('<div/>', {
-            class: "message",
-            id: prop + "message",
-            html: "<h4>" + message + "</h4>"
-        }).insertAfter('#' + prop + "game");
+    $('<div/>', {
+        class: "row",
+        id: prop + "row1"
+    }).appendTo("#link");
 
-        $('<div/>', {
-            class: "imageLink",
-            id: prop + "imageLink",
-            html: "<h4>" + imageLink + "</h4>"
-        }).insertAfter('#' + prop + "message");
-    } else {
-        //insert in housing panels
-        $('<div/>', {
-            class: "panel-body ",
-            id: streamName,
-            html: "<h4>" + streamName + "</h4>"
-        }).insertAfter('#pan-head-offline');
+    $('<div/>', {
+        class: "imageLink col-md-2",
+        id: prop + "imageLink",
+    }).appendTo('#' + prop + "row1");
 
-        $('<div/>', {
-            class: "game",
-            id: prop + "game",
-            html: "<h4>" + game + "</h4>"
-        }).appendTo('#' + streamName);
+    $('<img/>', {
+        class: "profileImage",
+        src: imageLink,
+        alt: prop + "Profile Image"
+    }).appendTo('#' + prop + "imageLink");
 
-        $('<div/>', {
-            class: "message",
-            id: prop + "message",
-            html: "<h4>" + message + "</h4>"
-        }).insertAfter('#' + prop + "game");
+    $('<div/>', {
+        class: "streamName col-md-2",
+        id: streamName,
+        html: "<h4>" + streamName + "</h4>"
+    }).insertAfter('#' + prop + "imageLink");
 
-        $('<div/>', {
-            class: "imageLink",
-            id: prop + "imageLink",
-            html: "<h4>" + imageLink + "</h4>"
-        }).insertAfter('#' + prop + "message");
-    }
+    $('<div/>', {
+        class: "game center-text col-md-offset-6 col-md-2",
+        id: prop + "game",
+        html: "<h4>" + game + "</h4>"
+    }).insertAfter('#' + streamName);
+
+    $('<div/>', {
+        class: "message col-md-6",
+        id: prop + "message",
+        html: "<h4>" + message + "</h4>"
+    }).insertAfter('#' + prop + "game");
 }
 
 function removeItem() {

@@ -28,6 +28,7 @@
 
 .bigbox {
     margin-top: 2em;
+    width: 64em;
 }
 
 .panel-success {
@@ -36,4 +37,15 @@
 
 .panel-danger {
     margin-bottom: 0;
+}
+
+.panel-info {
+    border: 0;
+}
+
+.profileImage {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 5px;
+    width: 70px;
 }

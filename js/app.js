@@ -119,7 +119,7 @@ function populatePanels(prop) {
     }).appendTo("#link");
 
     $('<div/>', {
-        class: "imageLink col-md-1",
+        class: "imageLink col-md-2",
         id: prop + "imageLink",
     }).appendTo('#' + prop + "row1");
 
@@ -130,7 +130,7 @@ function populatePanels(prop) {
     }).appendTo('#' + prop + "imageLink");
 
     $('<div/>', {
-        class: "streamName col-md-1 col-md-offset-1",
+        class: "streamName col-md-1",
         id: streamName,
         html: "<h4>" + streamName + "</h4>"
     }).insertAfter('#' + prop + "imageLink");

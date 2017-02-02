@@ -2,17 +2,17 @@
 
 //hardcoded streamlist
 //2d array with name of stream and stream properties
-var streamList = [
-    ["ESL_SC2", {}],
-    ["nightblue3", {}],
-    ["doublelift", {}],
-    ["freecodecamp", {}]
-];
+var streamList = {
+    "ESL_SC2": {},
+    "nightblue3": {},
+    "doublelift": {},
+    "freecodecamp": {},
+    "imaqtpie": {}
+};
 
 //onload
 $(document).ready(function() {
-    var streamInfo = getChannels("nightblue3");
-    //console.log(streamInfo["imageLink"]);
+    getChannels("kjsdfksahdflsadf");
 });
 
 //gets dem channels J S O N 
@@ -36,15 +36,20 @@ function getChannels(channel) {
         var streamText = JSON.stringify(data["stream"]);
 
         //check if channel exists and is online.
-        if (isNaN(streamText === null)) { //if channel is offline or DNE
-
+        if (streamText === "null") { //if channel is offline or DNE
+            console.log("hello");
             $.getJSON(channelApiLink).done(updateChannel).fail(errChannel); //JSON request
 
             function updateChannel(channeldat) {
                 var channelText = JSON.stringify(channeldat["status"]);
                 if ($.isNumeric(channelText)) { //if DNE
-                    returnObject = null;
-                    return;
+                    returnObject = {
+                        "streamName": null,
+                        "message": null,
+                        "game": null,
+                        "imageLink": null,
+                        "online": false
+                    };
                 } else { //if offline
                     returnObject = {
                         "streamName": JSON.stringify(channeldat["display_name"]).replace(/"/g, ""),
@@ -53,7 +58,6 @@ function getChannels(channel) {
                         "imageLink": JSON.stringify(channeldat["logo"]).replace(/"/g, ""),
                         "online": false
                     }
-                    return;
                 }
             }
 
@@ -70,17 +74,22 @@ function getChannels(channel) {
                 "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]).replace(/"/g, ""),
                 "online": true
             }
-            return;
         }
+        console.log(returnObject);
+        addToStreamList(channel, returnObject);
     }
-
-    console.log(returnObject);
-    return returnObject;
 
     //if JSON request does not go through
     function errStream(jqxhr, textStatus, err) {
         console.log("Stream Request Failed: " + textStatus + ", " + err);
     }
+
+}
+
+//adds streaminfo to streamlist
+function addToStreamList(channel, returnObject) {
+    streamList[channel] = returnObject;
+    console.log(streamList[channel]);
 }
 
 function updateLists() {

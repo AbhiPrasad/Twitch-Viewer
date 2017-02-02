@@ -103,57 +103,47 @@ function populatePanels(prop) {
     let imageLink = streamList[prop]["imageLink"];
     let online = streamList[prop]["online"];
 
-    if (online) {
-        //insert in housing panels
-        $('<div/>', {
-            class: "panel-body ",
-            id: streamName,
-            html: "<h4>" + streamName + "</h4>"
-        }).insertAfter('#pan-head-online');
+    //insert in housing panels
+    $('<div/>', {
+        class: "panel-body",
+        id: prop + "pn1"
+    }).insertAfter('#pan-head-online');
 
-        $('<div/>', {
-            class: "game",
-            id: prop + "game",
-            html: "<h4>" + game + "</h4>"
-        }).appendTo('#' + streamName);
+    $('<div/>', {
+        class: "row",
+        id: prop + "row1"
+    }).appendTo("#" + prop + "pn1");
 
-        $('<div/>', {
-            class: "message",
-            id: prop + "message",
-            html: "<h4>" + message + "</h4>"
-        }).insertAfter('#' + prop + "game");
+    $('<a/>', {
+        class: "imageLink col-md-2",
+        id: prop + "imageLink",
+        href: "https://www.twitch.tv/" + streamName,
+        target: "_blank"
+    }).appendTo('#' + prop + "row1");
 
-        $('<div/>', {
-            class: "imageLink",
-            id: prop + "imageLink",
-            html: "<h4>" + imageLink + "</h4>"
-        }).insertAfter('#' + prop + "message");
-    } else {
-        //insert in housing panels
-        $('<div/>', {
-            class: "panel-body ",
-            id: streamName,
-            html: "<h4>" + streamName + "</h4>"
-        }).insertAfter('#pan-head-offline');
+    $('<img/>', {
+        class: "profileImage center-block",
+        src: imageLink,
+        alt: prop + "Profile Image"
+    }).appendTo('#' + prop + "imageLink");
 
-        $('<div/>', {
-            class: "game",
-            id: prop + "game",
-            html: "<h4>" + game + "</h4>"
-        }).appendTo('#' + streamName);
+    $('<div/>', {
+        class: "streamName col-md-1 center-block",
+        id: streamName,
+        html: "<h4>" + streamName + "</h4>"
+    }).insertAfter('#' + prop + "imageLink");
 
-        $('<div/>', {
-            class: "message",
-            id: prop + "message",
-            html: "<h4>" + message + "</h4>"
-        }).insertAfter('#' + prop + "game");
+    $('<div/>', {
+        class: "message col-md-6 col-md-offset-3 center-block",
+        id: prop + "message",
+        html: "<h4>" + message + "</h4>"
+    }).insertAfter('#' + streamName);
 
-        $('<div/>', {
-            class: "imageLink",
-            id: prop + "imageLink",
-            html: "<h4>" + imageLink + "</h4>"
-        }).insertAfter('#' + prop + "message");
-    }
+    $('<div/>', {
+        class: "game center-text col-md-2 col-md-offset-2 center-block",
+        id: prop + "game",
+        html: "<h4>" + game + "</h4>"
+    }).insertAfter('#' + prop + "message");
 }
 
 function removeItem() {

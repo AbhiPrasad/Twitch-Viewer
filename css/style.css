@@ -32,8 +32,30 @@
 
 .panel-success {
     margin-bottom: 0;
+    border-bottom-color: #FF0039;
 }
 
 .panel-danger {
     margin-bottom: 0;
+}
+
+.panel-info {
+    border: 0;
+}
+
+.profileImage {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 5px;
+    width: 70px;
+}
+
+.panel-body {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.panel-body:hover {
+    background: #f5f5f5;
 }

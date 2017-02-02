@@ -1,34 +1,65 @@
 "use strict"; // E C M A S C R I P T
 
-var streams = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+var streamList = [
+    ["ESL_SC2", {}],
+    ["nightblue3", {}],
+    ["doublelift", {}],
+    ["freecodecamp", {}]
+];
 var streamInfo = [];
 
 //onload
 $(document).ready(function() {
-    var status = getChannels("nightblue3");
+    var streamInfo = getChannels("doublelift");
 });
 
 function getChannels(channel) {
     var apiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel + "?callback=?"
-    var game = "";
-    var imageLink = "";
     var streamName = "";
     var status = "";
+    var game = "";
+    var imageLink = "";
+    var previewLink = "";
+    var allGood = true;
 
     $.getJSON(apiLink).done(updateChannel).fail(errStream);
 
     function updateChannel(data) {
 
-        let channeltext = JSON.stringify(data["stream"]["game"]).replace(/"/g, "");
+        //if channel is not online
+        let channeltext = JSON.stringify(data["stream"]);
         console.log(channeltext);
-        $('#testingpanel').html("<h3>" + channeltext + "</h3>");
 
-        // game = JSON.stringify(data["stream"]["game"]).replace()
+        if (isNaN(channeltext)) {
+            allGood = false;
+        } else {
+            allGood = true;
+        }
+
+        streamName = JSON.stringify(data["stream"]["channel"]["display_name"]);
+        status = JSON.stringify(data["stream"]["channel"]["status"]);
+        game = JSON.stringify(data["stream"]["game"]);
+        imageLink = JSON.stringify(data["stream"]["channel"]["logo"]);
+        previewLink = JSON.stringify(data["stream"]["preview"]["small"]);
     }
 
     function errStream(jqxhr, textStatus, err) {
         console.log("Weather Request Failed: " + textStatus + ", " + err);
     }
+
+    console.log(allGood);
+    if (allGood) {
+        return {
+            "streamName": streamName,
+            "status": status,
+            "game": game,
+            "imageLink": imageLink,
+            "previewLink": previewLink
+        }
+    } else {
+        return null;
+    }
+
 }
 
 function updateLists() {

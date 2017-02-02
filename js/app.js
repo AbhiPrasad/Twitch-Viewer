@@ -8,6 +8,7 @@ var streamList = {
     "doublelift": {},
     "freecodecamp": {},
     "imaqtpie": {},
+    "arumba07": {}
 };
 
 //onload
@@ -102,38 +103,51 @@ function populatePanels(prop) {
     let imageLink = streamList[prop]["imageLink"];
     let online = streamList[prop]["online"];
     let color = "";
+    let datasrt = '0';
 
     if (online) {
         color = "green";
+        datasrt = '1';
     } else {
         color = "red";
+        datasrt = '2';
     }
 
     //insert in housing panels
     $('<div/>', {
-        class: "panel-body",
+        class: "panel-body ",
         id: streamName,
         html: "<h4>" + streamName + "</h4>",
-        style: "color:" + color
+        style: "color:" + color,
+        "data-sort": datasrt
     }).insertAfter('#pan-head');
-
-    $('<div/>', {
-        class: "message",
-        id: prop + "message",
-        html: "<h4>" + message + "</h4>"
-    }).appendTo('#' + streamName);
 
     $('<div/>', {
         class: "game",
         id: prop + "game",
         html: "<h4>" + game + "</h4>"
-    }).insertAfter('#' + prop + "message");
+    }).appendTo('#' + streamName);
+
+    $('<div/>', {
+        class: "message",
+        id: prop + "message",
+        html: "<h4>" + message + "</h4>"
+    }).insertAfter('#' + prop + "game");
 
     $('<div/>', {
         class: "imageLink",
         id: prop + "imageLink",
         html: "<h4>" + imageLink + "</h4>"
-    }).insertAfter('#' + prop + "game");
+    }).insertAfter('#' + prop + "message");
+
+    //sorts div to show online first - based off of http://stackoverflow.com/questions/17017148/ordering-divs-based-on-class-name-using-javascript-jquery
+    /* $('div').sort(function(a, b) {
+         var contentA = parseInt($(a).attr('data-sort'));
+         var contentB = parseInt($(b).attr('data-sort'));
+         return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+     }) */
+
+    $('#' + streamName).sortDivs();
 }
 
 function removeItem() {
@@ -142,4 +156,12 @@ function removeItem() {
 
 function addItem() {
 
+}
+
+jQuery.fn.sortDivs = function sortDivs() {
+    $("> div", this[0]).sort(dec_sort).appendTo(this[0]);
+
+    function dec_sort(a, b) {
+        return ($(b).data("sort")) < ($(a).data("sort")) ? 1 : -1;
+    }
 }

@@ -22,3 +22,10 @@
 .panel-info>.panel-footer+.panel-collapse>.panel-body {
     border-bottom-color: #6441A4;
 }
+
+
+/* other stuff */
+
+.bigbox {
+    margin-top: 2em;
+}

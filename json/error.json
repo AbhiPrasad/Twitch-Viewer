@@ -1,7 +1,0 @@
-{
-    "stream": null,
-    "_links": {
-        "self": "https://api.twitch.tv/kraken/streams/doublelift",
-        "channel": "https://api.twitch.tv/kraken/channels/doublelift"
-    }
-}

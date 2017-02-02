@@ -114,9 +114,11 @@ function populatePanels(prop) {
         id: prop + "row1"
     }).appendTo("#" + prop + "pn1");
 
-    $('<div/>', {
+    $('<a/>', {
         class: "imageLink col-md-2",
         id: prop + "imageLink",
+        href: "https://www.twitch.tv/" + streamName,
+        target: "_blank"
     }).appendTo('#' + prop + "row1");
 
     $('<img/>', {

@@ -28,7 +28,6 @@
 
 .bigbox {
     margin-top: 2em;
-    text-align: center;
 }
 
 .panel-success {
@@ -54,4 +53,9 @@
 .panel-body {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.panel-body:hover {
+    background: #f5f5f5;
 }

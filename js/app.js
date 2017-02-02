@@ -5,16 +5,19 @@ var streamInfo = [];
 
 //onload
 $(document).ready(function() {
-    getChannels();
+    getChannels("doublelift");
 });
 
 function getChannels(channel) {
     let apiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel + "?callback=?"
+    let game = "";
 
     $.getJSON(apiLink).done(updateChannel).fail(errStream);
 
     function updateChannel(data) {
-        var
+        let channeltext = JSON.stringify(data["stream"]["game"]).replace(/"/g, "");
+        console.log(channeltext);
+        $('#testingpanel').html("<h3>" + channeltext + "</h3>");
     }
 
     function errStream(jqxhr, textStatus, err) {
@@ -23,6 +26,10 @@ function getChannels(channel) {
 }
 
 function updateLists() {
+
+}
+
+function populatePanels() {
 
 }
 

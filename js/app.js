@@ -12,14 +12,14 @@ var streamList = [
 //onload
 $(document).ready(function() {
     var streamInfo = getChannels("nightblue3");
-    console.log(streamInfo);
+    //console.log(streamInfo["imageLink"]);
 });
 
 //gets dem channels J S O N 
 function getChannels(channel) {
     //api links used
-    var channelApiLink = "https://wind-bow.gomix.me/twitch-api/channels/" + channel + "?callback=?"
-    var streamApiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel + "?callback=?"
+    var channelApiLink = "https://wind-bow.gomix.me/twitch-api/channels/" + channel;
+    var streamApiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel;
 
     // return variables
     var streamName = "";
@@ -29,36 +29,31 @@ function getChannels(channel) {
     var online = true;
     var returnObject = {};
 
-    // flag for return state (online, offline or DNE)
-    var allGood = true;
-
     $.getJSON(streamApiLink).done(updateStream).fail(errStream); //JSON request
 
     // if JSON request goes through
     function updateStream(data) {
+        var streamText = JSON.stringify(data["stream"]);
 
-        let streamText = JSON.stringify(data["stream"]);
         //check if channel exists and is online.
-        if (isNaN(streamText)) { //if channel is offline or DNE
+        if (isNaN(streamText === null)) { //if channel is offline or DNE
 
             $.getJSON(channelApiLink).done(updateChannel).fail(errChannel); //JSON request
 
             function updateChannel(channeldat) {
-                let channelText = JSON.stringify(channeldat["status"]);
-
+                var channelText = JSON.stringify(channeldat["status"]);
                 if ($.isNumeric(channelText)) { //if DNE
-                    return null;
+                    returnObject = null;
+                    return;
                 } else { //if offline
-                    allGood = true;
-
-                    return returnObject = {
+                    returnObject = {
                         "streamName": JSON.stringify(channeldat["display_name"]).replace(/"/g, ""),
                         "message": JSON.stringify(channeldat["status"]).replace(/"/g, ""),
                         "game": JSON.stringify(channeldat["game"]).replace(/"/g, ""),
                         "imageLink": JSON.stringify(channeldat["logo"]).replace(/"/g, ""),
                         "online": false
                     }
-
+                    return;
                 }
             }
 
@@ -67,29 +62,20 @@ function getChannels(channel) {
             }
 
         } else { //if channel is online
-            allGood = true;
-
             var testing = JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, "")
-            console.log(testing);
-            $('#testingpanel').html(testing);
-
-            return returnObject = {
+            returnObject = {
                 "streamName": JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, ""),
                 "message": JSON.stringify(data["stream"]["channel"]["status"]).replace(/"/g, ""),
                 "game": JSON.stringify(data["stream"]["game"]).replace(/"/g, ""),
                 "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]).replace(/"/g, ""),
                 "online": true
             }
+            return;
         }
-        /*
-                // returns value according to if channel data was received or not
-                if (allGood) {
-                    return returnObject;
-                } else {
-                    return null;
-                }
-                */
     }
+
+    console.log(returnObject);
+    return returnObject;
 
     //if JSON request does not go through
     function errStream(jqxhr, textStatus, err) {

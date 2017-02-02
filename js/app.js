@@ -145,6 +145,14 @@ function populatePanels(prop) {
             id: prop + "game",
             html: "<h4>" + game + "</h4>"
         }).insertAfter('#' + prop + "message");
+
+        $('<a/>', {
+            href: "#",
+            class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
+            id: prop + "remove",
+            html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
+            "data-id": prop
+        }).insertAfter('#' + prop + "game");
     } else {
         $('<div/>', {
             class: "panel-body",
@@ -186,10 +194,19 @@ function populatePanels(prop) {
             id: prop + "game",
             html: "<h4>" + game + "</h4>"
         }).insertAfter('#' + prop + "message");
+
+        $('<a/>', {
+            href: "#",
+            class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
+            id: prop + "remove",
+            html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
+            "data-id": prop
+        }).insertAfter('#' + prop + "game");
     }
 }
 
 function removeItem() {
+    console.log("hello");
 
 }
 

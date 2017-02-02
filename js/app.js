@@ -8,13 +8,11 @@ var streamList = {
     "doublelift": {},
     "freecodecamp": {},
     "imaqtpie": {},
-    "skjdfkjdshljsdfksjdf": {}
 };
 
 //onload
 $(document).ready(function() {
     updateLists();
-    populatePanels();
 });
 
 //gets dem channels J S O N 
@@ -62,6 +60,7 @@ function getChannels(channel) {
                 }
                 console.log(returnObject);
                 addToStreamList(channel, returnObject);
+                populatePanels(channel);
             }
 
             function errChannel(jqxhr, textStatus, err) {
@@ -69,7 +68,6 @@ function getChannels(channel) {
             }
 
         } else { //if channel is online
-            var testing = JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, "")
             returnObject = {
                 "streamName": JSON.stringify(data["stream"]["channel"]["display_name"]).replace(/"/g, ""),
                 "message": JSON.stringify(data["stream"]["channel"]["status"]).replace(/"/g, ""),
@@ -79,6 +77,7 @@ function getChannels(channel) {
             }
             console.log(returnObject);
             addToStreamList(channel, returnObject);
+            populatePanels(channel);
         }
     }
 
@@ -101,8 +100,9 @@ function updateLists() {
     }
 }
 
-function populatePanels() {
-
+function populatePanels(prop) {
+    let streamName = streamList[prop]["streamName"];
+    console.log(streamName);
 }
 
 function removeItem() {

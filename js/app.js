@@ -22,11 +22,6 @@ function getChannels(channel) {
     var streamApiLink = "https://wind-bow.gomix.me/twitch-api/streams/" + channel;
 
     // return variables
-    var streamName = "";
-    var message = "";
-    var game = "";
-    var imageLink = "";
-    var online = true;
     var returnObject = {};
 
     $.getJSON(streamApiLink).done(updateStream).fail(errStream); //JSON request
@@ -102,7 +97,24 @@ function updateLists() {
 
 function populatePanels(prop) {
     let streamName = streamList[prop]["streamName"];
-    console.log(streamName);
+    let message = streamList[prop]["message"];
+    let game = streamList[prop]["game"];
+    let imageLink = streamList[prop]["imageLink"];
+    let online = streamList[prop]["online"];
+
+    //insert in housing panels
+    $('<div/>', {
+        class: "panel-body",
+        id: prop,
+        html: "<h4>" + prop + "</h4>"
+    }).insertAfter('#pan-head');
+    /*
+        $('<div/>', {
+            class: "panel-body",
+            id: prop,
+            html: "<h4>" + prop + "</h4>"
+        }).appendTo('#' + prop);
+        */
 }
 
 function removeItem() {

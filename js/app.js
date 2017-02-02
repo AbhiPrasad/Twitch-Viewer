@@ -7,12 +7,14 @@ var streamList = {
     "nightblue3": {},
     "doublelift": {},
     "freecodecamp": {},
-    "imaqtpie": {}
+    "imaqtpie": {},
+    "skjdfkjdshljsdfksjdf": {}
 };
 
 //onload
 $(document).ready(function() {
-    getChannels("imaqtpie");
+    updateLists();
+    populatePanels();
 });
 
 //gets dem channels J S O N 
@@ -37,7 +39,6 @@ function getChannels(channel) {
 
         //check if channel exists and is online.
         if (streamText === "null") { //if channel is offline or DNE
-            console.log("hello");
             $.getJSON(channelApiLink).done(updateChannel).fail(errChannel); //JSON request
 
             function updateChannel(channeldat) {
@@ -91,11 +92,13 @@ function getChannels(channel) {
 //adds streaminfo to streamlist
 function addToStreamList(channel, returnObject) {
     streamList[channel] = returnObject;
-    console.log(streamList[channel]);
 }
 
+//pull stream data for each thing in streamlist
 function updateLists() {
-
+    for (var prop in streamList) {
+        getChannels(prop);
+    }
 }
 
 function populatePanels() {

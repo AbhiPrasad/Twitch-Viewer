@@ -263,3 +263,7 @@ function clearLists() {
     $('.emptyme').empty();
     $('.emptyme').remove();
 }
+
+function updateStory() {
+
+}

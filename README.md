@@ -1,6 +1,8 @@
 # Twitch-viewer
 
-Lists your favourite streamers and provides a link to their stream 
+Lists your favourite streamers and provides a link to their streamer
+
+### 
 
 ## Uses
 * Twitch.tv api
@@ -18,8 +20,6 @@ Lists your favourite streamers and provides a link to their stream
 * Sign into your own account
 * node backend so I can finally use my own api key (please)
 
-[Link](https://abhiprasad.github.io/Twitch-Viewer/)
-
 ## Shoutouts
 
 Thanks to [bootswatch](https://bootswatch.com) and [twitch.tv](https://twitch.tv)
@@ -27,4 +27,6 @@ Thanks to [bootswatch](https://bootswatch.com) and [twitch.tv](https://twitch.tv
 ### Note:
 If the functions seem like their repeated a lot, it was because trying to avoid asynchronous stuff. I made some adjustments to avoid using timers or Javascript promises, but if promises are implemented the code will be much cleaner and faster. 
 
+--- 
 
+MIT License

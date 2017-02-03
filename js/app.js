@@ -110,7 +110,7 @@ function populatePanels(prop) {
         }).insertAfter('#pan-head-online');
 
         $('<div/>', {
-            class: "row",
+            class: "row wrapper",
             id: prop + "row1"
         }).appendTo("#" + prop + "pn1");
 
@@ -147,10 +147,12 @@ function populatePanels(prop) {
 
         $('<a/>', {
             href: "#",
-            onclick: removeItem(this),
-            class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
+            //onclick: removeItem(this),
+            class: prop + " btn btn-danger btn-click col-md-2 btn-circle center-block text-center",
             id: prop + "remove",
             html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
+            "data-toggle": "modal",
+            "data-target": "#myModal",
             "data-id": prop
         }).insertAfter('#' + prop + "game");
     } else {
@@ -160,7 +162,7 @@ function populatePanels(prop) {
         }).insertAfter('#pan-head-offline');
 
         $('<div/>', {
-            class: "row",
+            class: "row wrapper",
             id: prop + "row1"
         }).appendTo("#" + prop + "pn1");
 
@@ -197,18 +199,30 @@ function populatePanels(prop) {
 
         $('<a/>', {
             href: "#",
-            onclick: removeItem(this),
-            class: prop + " btn btn-danger col-md-2 btn-circle center-block text-center",
+            //onclick: removeItem(this),
+            class: prop + " btn btn-danger btn-click col-md-2 btn-circle center-block text-center",
             id: prop + "remove",
             html: '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>',
+            "data-toggle": "modal",
+            "data-target": "#myModal",
             "data-id": prop
         }).insertAfter('#' + prop + "game");
     }
+    RefreshEventListener();
 }
 
-function removeItem(input) {
-    var value = $(input).data("id");
+function RefreshEventListener() {
+    $('.wrapper').on('click', '.btn-click', function() {
+        var property = $(this).attr("data-id");
 
+        refreshModalListener(property);
+    });
+}
+
+function refreshModalListener(property) {
+    $('#myModal').on('click', '#modalDelete', function() {
+        $('#' + property + 'pn1').remove();
+    });
 }
 
 function addItem() {

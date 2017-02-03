@@ -21,6 +21,18 @@ $(document).ready(function() {
         $('#addStreamer').prop("disabled", true);
         checkExist(streamer);
     });
+
+    $("#pan-head-online").click(function(e) {
+        console.log("online");
+        e.stopPropagation();
+        $('.online-body').toggle();
+    });
+
+    $("#pan-head-offline").click(function(e) {
+        e.stopPropagation();
+        $('.offline-body').toggle();
+    });
+
 });
 
 //gets dem channels J S O N 
@@ -111,7 +123,7 @@ function populatePanels(prop) {
     //insert in housing panels
     if (online) {
         $('<div/>', {
-            class: "panel-body emptyme",
+            class: "panel-body emptyme online-body",
             id: prop + "pn1"
         }).insertAfter('#pan-head-online');
 
@@ -163,7 +175,7 @@ function populatePanels(prop) {
         }).insertAfter('#' + prop + "game");
     } else {
         $('<div/>', {
-            class: "panel-body emptyme",
+            class: "panel-body emptyme offline-body",
             id: prop + "pn1"
         }).insertAfter('#pan-head-offline');
 
@@ -274,9 +286,7 @@ function updateStorage() {
 }
 
 function loadStorage() {
-    console.log("hello");
     var temp = JSON.parse(localStorage.getItem('twitchStreamerInfo'));
-    console.log("temp");
     if (jQuery.isEmptyObject(temp)) {
         streamList = {
             "ESL_SC2": {},
@@ -287,6 +297,5 @@ function loadStorage() {
         };
     } else {
         streamList = temp;
-        console.log("we did it!")
     }
 }

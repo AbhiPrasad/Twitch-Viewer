@@ -270,12 +270,12 @@ function clearLists() {
 function updateStorage() {
     var storageData = JSON.stringify(streamList);
 
-    localStorage.setItem('storedData', storageData);
+    localStorage.setItem('twitchStreamerInfo', storageData);
 }
 
 function loadStorage() {
     console.log("hello");
-    var temp = JSON.parse(localStorage.getItem('storedData'));
+    var temp = JSON.parse(localStorage.getItem('twitchStreamerInfo'));
     console.log("temp");
     if (jQuery.isEmptyObject(temp)) {
         streamList = {

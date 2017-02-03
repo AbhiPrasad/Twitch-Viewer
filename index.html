@@ -20,7 +20,16 @@
     <div class="container bigbox">
         <div class="row">
             <div class="panel panel-info pans">
-                <div class="panel-heading heade"> <i class="fa fa-twitch" aria-hidden="true"></i> Twitch.tv Viewer</div>
+                <div class="panel-heading heade">
+                    <i class="fa fa-twitch" aria-hidden="true"></i> Twitch.tv Viewer
+                    <div class="form-group">
+                        <label class="control-label">Add a streamer</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="streamerInput">
+                            <span class="input-group-btn"><button class="btn btn-default" id="addStreamer" type="button">Add</button></span>
+                        </div>
+                    </div>
+                </div>
                 <div class="panel panel-success">
                     <div class="panel-heading" id="pan-head-online"> Online </div>
                 </div>
@@ -32,8 +41,6 @@
 
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
-
-                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -44,9 +51,9 @@
                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="modalDelete">Delete</button>
                     </div>
                 </div>
-
             </div>
         </div>
+
     </div>
 </body>
 

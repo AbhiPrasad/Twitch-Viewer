@@ -13,6 +13,12 @@ var streamList = {
 //onload
 $(document).ready(function() {
     updateLists();
+
+    $('#addStreamer').click(function() {
+        var streamer = $('.form-control').val();
+        $('#addStreamer').prop("disabled", true);
+        checkExist(streamer);
+    });
 });
 
 //gets dem channels J S O N 
@@ -105,7 +111,7 @@ function populatePanels(prop) {
     //insert in housing panels
     if (online) {
         $('<div/>', {
-            class: "panel-body",
+            class: "panel-body emptyme",
             id: prop + "pn1"
         }).insertAfter('#pan-head-online');
 
@@ -157,7 +163,7 @@ function populatePanels(prop) {
         }).insertAfter('#' + prop + "game");
     } else {
         $('<div/>', {
-            class: "panel-body",
+            class: "panel-body emptyme",
             id: prop + "pn1"
         }).insertAfter('#pan-head-offline');
 
@@ -225,6 +231,35 @@ function refreshModalListener(property) {
     });
 }
 
-function addItem() {
+function checkExist(channel) {
+    var apiLink = "https://wind-bow.gomix.me/twitch-api/channels/" + channel;
 
+    $.getJSON(apiLink).done(update).fail(err); //JSON request
+
+    function update(json) {
+        var text = JSON.stringify(json["status"]);
+
+        if ($.isNumeric(text)) { //if null
+            alert("DNE!");
+        } else if (streamList.hasOwnProperty(channel)) {
+            alert("already in list!");
+        } else {
+            alert("Added " + channel)
+            streamList[channel] = {};
+            clearLists();
+            updateLists();
+        }
+    }
+
+    function err(jqxhr, textStatus, err) {
+        console.log("Stream Request Failed: " + textStatus + ", " + err);
+    }
+
+    $('.form-control').val("");
+    $('#addStreamer').prop("disabled", false);
+}
+
+function clearLists() {
+    $('.emptyme').empty();
+    $('.emptyme').remove();
 }

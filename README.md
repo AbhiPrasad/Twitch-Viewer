@@ -1,8 +1,8 @@
-# Twitch-viewer
+# Twitch Viewer
 
 Lists your favourite streamers and provides a link to their streamer
 
-### 
+<a href="url"><img src="https://raw.githubusercontent.com/AbhiPrasad/twitch-viewer/master/screenshot.png" width="auto" height="300" ></a>
 
 ## Uses
 * Twitch.tv api

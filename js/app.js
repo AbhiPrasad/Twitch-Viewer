@@ -12,6 +12,8 @@ var streamList = {
 
 //onload
 $(document).ready(function() {
+    loadStorage()
+
     updateLists();
 
     $('#addStreamer').click(function() {
@@ -59,7 +61,6 @@ function getChannels(channel) {
                         "online": false
                     }
                 }
-                console.log(returnObject);
                 addToStreamList(channel, returnObject);
                 populatePanels(channel);
             }
@@ -76,7 +77,6 @@ function getChannels(channel) {
                 "imageLink": JSON.stringify(data["stream"]["channel"]["logo"]).replace(/"/g, ""),
                 "online": true
             }
-            console.log(returnObject);
             addToStreamList(channel, returnObject);
             populatePanels(channel);
         }
@@ -248,6 +248,7 @@ function checkExist(channel) {
             streamList[channel] = {};
             clearLists();
             updateLists();
+            updateStorage();
         }
     }
 
@@ -264,6 +265,26 @@ function clearLists() {
     $('.emptyme').remove();
 }
 
-function updateStory() {
+function updateStorage() {
+    var storageData = JSON.stringify(streamList);
 
+    localStorage.setItem('storedData', storageData);
+}
+
+function loadStorage() {
+    console.log("hello");
+    var temp = JSON.parse(localStorage.getItem('storedData'));
+    console.log("temp");
+    if (jQuery.isEmptyObject(temp)) {
+        streamList = {
+            "ESL_SC2": {},
+            "nightblue3": {},
+            "doublelift": {},
+            "imaqtpie": {},
+            "arumba07": {}
+        };
+    } else {
+        streamList = temp;
+        console.log("we did it!")
+    }
 }

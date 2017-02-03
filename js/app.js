@@ -228,6 +228,8 @@ function RefreshEventListener() {
 function refreshModalListener(property) {
     $('#myModal').on('click', '#modalDelete', function() {
         $('#' + property + 'pn1').remove();
+        delete streamList[property];
+        updateStorage();
     });
 }
 

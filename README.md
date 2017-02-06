@@ -24,6 +24,15 @@ Lists your favourite streamers and provides a link to their streamer
 
 Thanks to [bootswatch](https://bootswatch.com) and [twitch.tv](https://twitch.tv)
 
+## Branches?
+
+* **master** contains the main web app
+* **electron-test** contains an ported desktop version of the web app (STILL UNDER WORK)
+* **chromeExtension** contains the chrome extension version of the web app
+	** the chrome extension replaces the new tab page with twitch viewer web app
+
+---
+
 ### Note:
 If the functions seem like their repeated a lot, it was because trying to avoid asynchronous stuff. I made some adjustments to avoid using timers or Javascript promises, but if promises are implemented the code will be much cleaner and faster. 
 

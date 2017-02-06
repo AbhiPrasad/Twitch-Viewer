@@ -22,6 +22,8 @@ $(document).ready(function() {
         checkExist(streamer);
     });
 
+    /*
+
     $("#pan-head-online").click(function(e) {
         console.log("online");
         e.stopPropagation();
@@ -32,6 +34,7 @@ $(document).ready(function() {
         e.stopPropagation();
         $('.offline-body').toggle();
     });
+    */
 
 });
 

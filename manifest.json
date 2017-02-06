@@ -3,12 +3,19 @@
     "name": "Twitch Viewer",
     "version": "0.0.1",
 
-    "default_locale": "en",
+    //"default_locale": "en",
     "description": "A extension that replaces your new tab page with the twitch viewer",
     //"icons":
 
-    "background": {
-    	"persistent": false
-    }
+    "chrome_url_overrides" : {
+    	"newtab": "index.html"
+  	},
+
+  	"permissions": [
+  		"system.storage",
+  		"system.memory",
+  		"webRequest",
+  		"*://*.wind-bow.gomix.me/*"
+  	]
 
 }

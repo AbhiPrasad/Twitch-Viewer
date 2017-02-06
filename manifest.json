@@ -7,4 +7,8 @@
     "description": "A extension that replaces your new tab page with the twitch viewer",
     //"icons":
 
+    "background": {
+    	"persistent": false
+    }
+
 }

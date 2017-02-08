@@ -1,6 +1,6 @@
 # Twitch Viewer
 
-Lists your favourite streamers and provides a link to their streamer
+Provides a list of twitch.tv streamers and an according link to their stream. The the custom list of streamers is saved on your page. 
 
 <a href="url"><img src="https://raw.githubusercontent.com/AbhiPrasad/Twitch-Viewer/master/screenshot.png" width="auto" height="300" ></a>
 

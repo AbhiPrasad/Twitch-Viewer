@@ -1,4 +1,4 @@
-# :tv: Twitch Viewer
+# :tv: Twitch Dashboard
 
 A quick look at different twitch.tv streams and who is online or not. 
 

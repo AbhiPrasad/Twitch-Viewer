@@ -7,7 +7,7 @@ A quick look at different twitch.tv streams and who is online or not.
 ## Uses
 * Twitch.tv api
 * [bootswatch](https://bootswatch.com) cosmo theme
-* J Q U E R Y
+* jQuery + ajax
 
 ## Features
 * Add and remove streamers
